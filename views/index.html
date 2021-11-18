@@ -446,12 +446,12 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xl-12">
+                        <div class="col-xl-24">
                             <div class="product-tab-content">
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                         <div class="product-slider owl-carousel">
-                                            <div class="pro-item">
+                                            <!-- <div class="pro-item">
                                                 <div class="product-wrapper mb-50">
                                                     <div class="product-img mb-25">
                                                         <a href="product-details.html">
@@ -534,8 +534,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="pro-item">
+                                            </div> -->
+                                            <!-- <div class="pro-item">
                                                 <div class="product-wrapper mb-50">
                                                     <div class="product-img mb-25">
                                                         <a href="product-details.html">
@@ -614,8 +614,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="pro-item">
+                                            </div> -->
+                                            <!-- <div class="pro-item">
                                                 <div class="product-wrapper mb-50">
                                                     <div class="product-img mb-25">
                                                         <a href="product-details.html">
@@ -696,8 +696,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="pro-item">
+                                            </div> -->
+                                            <!-- <div class="pro-item">
                                                 <div class="product-wrapper mb-50">
                                                     <div class="product-img mb-25">
                                                         <a href="product-details.html">
@@ -855,10 +855,10 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <!-- <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                         <div class="product-slider owl-carousel">
                                             <div class="pro-item">
                                                 <div class="product-wrapper mb-50">
@@ -2085,7 +2085,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -3345,5 +3345,104 @@
         <script src="/styles/js/jquery.magnific-popup.min.js"></script>
         <script src="/styles/js/plugins.js"></script>
         <script src="/styles/js/main.js"></script>
+        <script>
+            var parent = document.getElementById('home');
+            var subParent = document.createElement('div');
+            subParent.className = 'product-slider owl-carousel';
+            subParent.id = 'subParent';
+            parent.appendChild(subParent);
+
+            var endpoint = 'http://localhost:5000/api/v1/Furniture/getAll';
+            async function getProducts(endpoint) {
+                const productsResponse = await fetch(endpoint, {
+                    method: "get",
+                    url: endpoint
+                });
+                return productsResponse.json();
+            }
+
+            getProducts(endpoint).then(products => {
+                console.log("Furniture", products);
+                for(var i=0; i<products.Products.length; i=i+2) {
+                    var owlDiv = document.createElement('div');
+                    owlDiv.className = 'owl-item';
+                    owlDiv.style.width = '290.25px';
+                    owlDiv.style.marginRight = '30px';
+                    subParent.appendChild(owlDiv);
+
+                    var subParentTwo = document.createElement('div');
+                    subParentTwo.className = 'pro-item';
+                    owlDiv.appendChild(subParentTwo);
+
+                    var subParentThree = document.createElement('div');
+                    subParentThree.className = 'product-wrapper mb-50';
+                    subParentTwo.appendChild(subParentThree);
+                    var subParentFour = document.createElement('div');
+                    subParentFour.className = 'product-img mb-25';
+                    subParentThree.appendChild(subParentFour);
+                    var subParentFive = document.createElement('div');
+                    subParentFive.className = 'product-content';
+                    subParentThree.appendChild(subParentFive);
+
+                    var subParentSix = document.createElement('div');
+                    subParentSix.className = 'product-wrapper mb-50';
+                    subParentTwo.appendChild(subParentSix);
+                    var subParentSeven = document.createElement('div');
+                    subParentSeven.className = 'product-img mb-25';
+                    subParentSix.appendChild(subParentSeven);
+                    var subParentEight = document.createElement('div');
+                    subParentEight.className = 'product-content';
+                    subParentSix.appendChild(subParentEight);
+
+                    var firstATag = document.createElement('a');
+                    firstATag.href = '/api/v1/product-details.html';
+                    subParentFour.appendChild(firstATag);
+                    var firstImgTag = document.createElement('img');
+                    firstImgTag.src = products.Products[i].product_image_url;
+                    firstImgTag.style.width = '405px';
+                    firstImgTag.style.height = '440px';
+                    firstATag.appendChild(firstImgTag);
+                    var firstH4Tag = document.createElement('h4');
+                    subParentFive.appendChild(firstH4Tag);
+                    var secATag = document.createElement('a');
+                    secATag.href = '/api/v1/product-details.html';
+                    secATag.innerHTML = products.Products[i].name;
+                    firstH4Tag.appendChild(secATag);
+                    var firstDiv = document.createElement('div');
+                    firstDiv.className = 'product-meta';
+                    subParentFive.appendChild(firstDiv);
+                    var secDiv = document.createElement('div');
+                    secDiv.className = 'pro-price';
+                    firstDiv.appendChild(secDiv);
+                    var firstSpan = document.createElement('span');
+                    firstSpan.innerHTML = products.Products[i].price;
+                    secDiv.appendChild(firstSpan);
+
+                    var secondATag = document.createElement('a');
+                    secondATag.href = '/api/v1/product-details.html';
+                    subParentSeven.appendChild(secondATag);
+                    var secondImgTag = document.createElement('img');
+                    secondImgTag.src = products.Products[i+1].product_image_url;
+                    secondImgTag.style.width = '405px';
+                    secondImgTag.style.height = '440px';
+                    secondATag.appendChild(secondImgTag);
+                    var secondH4Tag = document.createElement('h4');
+                    subParentEight.appendChild(secondH4Tag);
+                    var thirdATag = document.createElement('a');
+                    thirdATag.href = '/api/v1/product-details.html';
+                    thirdATag.innerHTML = products.Products[i+1].name;
+                    secondH4Tag.appendChild(thirdATag);
+                    var secondDiv = document.createElement('div');
+                    secondDiv.className = 'product-meta';
+                    subParentEight.appendChild(secondDiv);
+                    var thirdDiv = document.createElement('div');
+                    thirdDiv.className = 'pro-price';
+                    secondDiv.appendChild(thirdDiv);
+                    var secondSpan = document.createElement('span');
+                    secondSpan.innerHTML = products.Products[i+1].price;
+                    secondDiv.appendChild(secondSpan);
+                }
+            })
+        </script>
     </body>
 </html>
