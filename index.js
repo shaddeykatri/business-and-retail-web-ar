@@ -43,7 +43,8 @@ app.set("view engine", "html");
 
 //Setting Attachement Size limit
 app.use(express.static(path.join(__dirname, "public")));
-// app.use('/api/v1/', apiRoutes);
+// app.use(express.static(path.resolve('./public')));
+
 // Setting Routes for APIs
 
 // app.use('/', viewRoutes);

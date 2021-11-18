@@ -1,5 +1,18 @@
 const { Fashion, Furniture, Machinery } = require("../models/product");
 const asyncHandler = require("../middleware/async");
+var path = require('path');
+
+
+exports.goToHomePage = asyncHandler(async (req, res, next) => {
+  console.log("Root page hit!")
+  res.sendFile(path.join(__dirname + '/../views/index.html'));
+})
+
+exports.renderOtherFiles = asyncHandler(async (req, res, next) => {
+  var fileName = req.params["filename"]
+  console.log("filename",fileName)
+  res.sendFile(path.join(__dirname + '/../views/'+fileName));
+})
 
 //To create a model viewer
 exports.addProduct = asyncHandler(async (req, res, next) => {
