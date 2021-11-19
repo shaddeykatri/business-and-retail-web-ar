@@ -1,18 +1,56 @@
 const { Fashion, Furniture, Machinery } = require("../models/product");
 const asyncHandler = require("../middleware/async");
-var path = require('path');
-
+const qrcode = require("qrcode");
+var path = require("path");
 
 exports.goToHomePage = asyncHandler(async (req, res, next) => {
-  console.log("Root page hit!")
-  res.sendFile(path.join(__dirname + '/../views/index.html'));
-})
+  console.log("Root page hit!");
+  res.sendFile(path.join(__dirname + "/../views/index.html"));
+});
 
 exports.renderOtherFiles = asyncHandler(async (req, res, next) => {
-  var fileName = req.params["filename"]
-  console.log("filename",fileName)
-  res.sendFile(path.join(__dirname + '/../views/'+fileName));
-})
+  var fileName = req.params["filename"];
+  console.log("filename", fileName);
+  res.sendFile(path.join(__dirname + "/../views/" + fileName));
+});
+
+exports.makeQrCode = asyncHandler(async (req, res, next) => {
+  var inputUrl = req.body.url;
+  qrcode.toDataURL(inputUrl, function (err, url) {
+    res.status(200).json({ result: url });
+  });
+});
+
+exports.scanQrCode = asyncHandler(async (req, res, next) => {
+  var Product;
+  //get Product respective of industry with their id
+  if (req.params["industry"].localeCompare("Fashion") == 0) {
+    Product = await Fashion.findById(req.params["id"]);
+  } else if (req.params["industry"].localeCompare("Furniture") == 0) {
+    Product = await Furniture.findById(req.params["id"]);
+  } else if (req.params["industry"].localeCompare("Machinery") == 0) {
+    Product = await Machinery.findById(req.params["id"]);
+  }
+  var glbUrl = Product.src;
+  var usdzUrl = Product.ios_src;
+  var source = req.headers["user-agent"];
+  ua = useragent.parse(source);
+  console.log("Platform : ", ua.platform);
+  if (ua.platform == "Android") {
+    let redirect_url_android =
+      "intent://arvr.google.com/scene-viewer/1.0?file=" +
+      glbUrl +
+      "&mode=ar_only&resizable=false#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;resizable=false";
+    res.redirect(redirect_url_android);
+  } else if (
+    ua.platform == "iPhone" ||
+    ua.platform == "iPad" ||
+    ua.platform == "iPod"
+  ) {
+    let redirect_url_ios = usdzUrl + "#allowsContentScaling=0";
+    res.redirect(redirect_url_ios);
+  }
+});
 
 //To create a model viewer
 exports.addProduct = asyncHandler(async (req, res, next) => {
