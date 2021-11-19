@@ -1,0 +1,175 @@
+//Footer Area Style
+.footer-area {
+    color: #fff;
+    background: #2f333a;
+    .footer-top {
+        padding: 100px 0 80px 0;
+        @media #{$desktop-device} {
+            padding: 80px 0 60px 0;
+        }
+        @media #{$tablet-device} {
+            padding: 60px 0 40px 0;
+        }
+        @media #{$large-mobile} {
+            padding: 50px 0 50px 0;
+        }
+        & .single-wedge {
+            & .footer-herading {
+                font-size: 15px;
+                text-transform: uppercase;
+                font-weight: 500;
+                margin-bottom: 20px;
+                position: relative;
+                letter-spacing: 1.2px;
+                color: #fff;
+            }
+            & .about-text {
+                font-size: 14px;
+                max-width: 290px;
+                line-height: 24px;
+                @media #{$large-mobile} {
+                    max-width: 454px;
+                }
+            }
+            .footer-links {
+                & .li {
+                    display: block;
+                    margin: 0;
+                    line-height: 1;
+                    border: 0;
+                    padding: 0;
+                    font-weight: 400;
+                    margin-bottom: 8px;
+                }
+                & .single-link {
+                    font-size: 14px;
+                    line-height: 24px;
+                    padding: 0;
+                    display: inline-block;
+                    text-transform: capitalize;
+                    color: #fff;
+                    margin-bottom: 0;
+                    display: inline-block;
+                    position: relative;
+                    -webkit-transition: all 300ms linear;
+                    -moz-transition: all 300ms linear;
+                    -ms-transition: all 300ms linear;
+                    -o-transition: all 300ms linear;
+                    transition: all 300ms linear;
+                    &:hover {
+                        padding-left: 10px;
+                        color: $theme-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.link-follow {
+    & li {
+        list-style: none;
+        display: inline-block;
+    }
+    & a {
+        color: #fffefe;
+        margin-left: 20px;
+        font-size: 16px;
+        line-height: 32px;
+        width: 32px;
+        height: 32px;
+        text-align: center;
+        background-color: transparent;
+        display: block;
+        border-radius: 50%;
+        &:first-child {
+            margin: 0;
+        }
+        &:hover {
+            color: #fffefe;
+            background-color: $theme-color;
+        }
+    }
+}
+
+.subscribe-form {
+    position: relative;
+    margin: 20px 0 0;
+    @media #{$extra-small-mobile} {
+        margin: 20px 0 15px;
+    }
+    .mc-news {
+        position: absolute;
+        left: -5000px;
+    }
+    .email {
+        display: inline-block;
+        vertical-align: top;
+        line-height: 50px;
+        height: 50px;
+        color: #fff;
+        font-size: 15px;
+        width: 100%;
+        text-transform: capitalize;
+        border: 0;
+        background: transparent;
+        border: 1px solid #4d4d4d;
+        border-radius: 0;
+        -webkit-border-radius: 0;
+        text-align: left;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        padding-left: 20px;
+        padding-right: 10px;
+        &::placeholder {
+            color: #fff;
+        }
+        &:focus {
+            border-color: $theme-color;
+            border-radius: 0;
+        }
+    }
+    .button {
+        font-size: 13px;
+        font-weight: 600;
+        border: 0;
+        height: 50px;
+        width: 143px;
+        line-height: 50px;
+        text-align: center;
+        margin-top: 20px;
+        & i {
+            margin-right: 5px;
+        }
+    }
+}
+
+.footer-bottom {
+    background: #2a2a2a none repeat scroll 0 0;
+    padding: 25px 0 20px 0;
+    & .copy-text {
+        color: #fff;
+        font-size: 12px;
+        font-family: $raleway;
+        line-height: 26px;
+        & .company-name {
+            color: #fff;
+            &:hover {
+                color: $theme-color;
+            }
+        }
+        @media #{$large-mobile} {
+            margin-top: 10px;
+        }
+    }
+    & .text-right {
+        @media #{$large-mobile} {
+            text-align: center !important;
+        }
+    }
+    & .text-left {
+        @media #{$large-mobile} {
+            text-align: center !important;
+        }
+    }
+}

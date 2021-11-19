@@ -1,0 +1,202 @@
+//Banner Style
+
+.banner {
+    position: relative;
+
+    display: block;
+    overflow: hidden;
+    & img {
+        width: 100%;
+        transition: $baseTransition;
+    }
+    &:hover {
+        & img {
+            transform: scale(1.1) rotate(3deg);
+        }
+    }
+    & .info {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        display: flex;
+        flex-direction: row;
+
+        width: 100%;
+        height: 100%;
+        padding: 40px;
+        @media #{$small-mobile} {
+            padding: 20px;
+        }
+        & .content {
+            &:not(:last-child) {
+                margin-bottom: 25px;
+            }
+            & .title {
+                font-size: 30px;
+                font-weight: 600;
+                line-height: 39px;
+                margin-bottom: 16px;
+                color: $heading-color;
+                font-family: $raleway;
+                @media #{$large-mobile} {
+                    font-size: 30px;
+                }
+                @media #{$extra-small-mobile} {
+                    font-size: 24px;
+                    line-height: 24px;
+                }
+            }
+            & p {
+                font-size: 16px;
+                line-height:39px;
+                color: $body-color;
+                @media #{$extra-small-mobile} {
+                    line-height: 24px;
+                }
+            }
+        }
+    }
+}
+
+//Banner Style 2
+
+.banner-2 {
+    position: relative;
+
+    display: block;
+    overflow: hidden;
+    & img {
+        width: 100%;
+        transition: $baseTransition;
+    }
+    &:hover {
+        & img {
+            transform: scale(1.1) rotate(3deg);
+        }
+    }
+    & .info {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 100%;
+        padding: 60px 40px 40px 30px;
+        @media #{$desktop-device} {
+            padding: 40px 30px 40px 30px;
+        }
+        @media #{$small-mobile} {
+            padding: 20px;
+        }
+        & .content {
+            &:not(:last-child) {
+                margin-bottom: 25px;
+            }
+            & .title {
+                font-size: 22px;
+                font-weight: 700;
+                line-height: 32px;
+                margin-bottom: 30px;
+                color: $heading-color;
+                font-family: $raleway;
+                @media #{$desktop-device}{
+                    font-size: 18px;
+                    line-height: 28px;
+                    margin-bottom: 15px;
+                }
+                @media #{$large-mobile} {
+                    font-size: 20px;
+                }
+                @media #{$extra-small-mobile} {
+                    font-size: 18px;
+                    line-height: 24px;
+                }
+            }
+            & .shop-link {
+                font-size: 16px;
+                line-height:32px;
+                color: $body-color;
+                font-family: $raleway;
+                font-weight: 500;
+                text-decoration: underline;
+                &:hover{
+                    color:$theme-color;
+                }
+                @media #{$extra-small-mobile} {
+                    line-height: 24px;
+                }
+            }
+        }
+    }
+}
+
+//Banner Style 3
+
+.banner-3 {
+    position: relative;
+
+    display: block;
+    overflow: hidden;
+    & img {
+        width: 100%;
+        transition: $baseTransition;
+    }
+    &:hover {
+        & img {
+            transform: scale(1.1) rotate(3deg);
+        }
+    }
+    & .info {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        display: flex;
+        flex-direction: row;
+
+        width: 100%;
+        height: 100%;
+        padding: 40px 100px 40px 75px;
+        @media #{$desktop-device, $tablet-device, $large-mobile} {
+            padding: 40px 40px 40px 40px;
+        }
+        @media #{$small-mobile} {
+            padding: 20px;
+        }
+        & .content {
+            &:not(:last-child) {
+                margin-bottom: 25px;
+            }
+            & .title {
+                font-size: 40px;
+                font-weight: 600;
+                line-height: 53px;
+                margin-bottom: 20px;
+                color: $heading-color;
+                font-family: $raleway;
+                @media #{$desktop-device, $tablet-device, $large-mobile} {
+                    font-size: 30px;
+                    line-height: 39px;
+                }
+                @media #{$extra-small-mobile} {
+                    font-size: 24px;
+                    line-height: 30px;
+                }
+            }
+            & p {
+                font-size: 18px;
+                line-height:39px;
+                color: $body-color;
+                @media #{$desktop-device, $tablet-device, $large-mobile} {
+                    font-size: 16px;
+                }
+                @media #{$extra-small-mobile} {
+                    line-height: 24px;
+                }
+            }
+        }
+    }
+}
+

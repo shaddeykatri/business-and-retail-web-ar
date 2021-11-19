@@ -1,0 +1,104 @@
+.slider-nav-style-1 {
+    position: relative;
+    & .swiper-button-next {
+        &:after {
+            content: "\f3d3";
+        }
+    }
+}
+
+.slider-nav-style-1 {
+    & .swiper-button-prev {
+        &:after {
+            content: "\f3d2";
+        }
+    }
+}
+
+.slider-nav-style-1 .swiper-button-next:after,
+.slider-nav-style-1 .swiper-button-prev:after {
+    font-family: $Ionicons;
+    font-size: 20px;
+    text-transform: none!important;
+    letter-spacing: 0;
+    text-transform: none;
+    font-variant: initial;
+    line-height: 1;
+    outline: 0;
+}
+
+.slider-nav-style-1.small-nav .swiper-button-next:after,
+.slider-nav-style-1.small-nav .swiper-button-prev:after {
+    font-size: 14px;
+}
+
+.slider-nav-style-1 .swiper-buttons .swiper-button-next,
+.slider-nav-style-1 .swiper-buttons .swiper-button-prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+    margin: auto;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 0 3px 25.5px 4.5px rgba(0, 0, 0, .06);
+    color: $heading-color;
+    background-color: #fff;
+    &:hover {
+        background-color: $theme-color;
+        color: #fff;
+    }
+}
+
+.slider-nav-style-1.small-nav .swiper-buttons .swiper-button-next,
+.slider-nav-style-1.small-nav .swiper-buttons .swiper-button-prev {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    &:hover {
+        background-color: $theme-color;
+        color: #fff;
+    }
+}
+
+.slider-nav-style-1 {
+    & .swiper-button-prev {
+        outline: 0;
+        right: auto;
+        left: -20px;
+        @media #{$large-mobile}{
+            left: -15px;
+        }
+    }
+}
+
+.slider-nav-style-1 {
+    & .swiper-button-next {
+        outline: 0;
+        left: auto;
+        right: -20px;
+        @media #{$large-mobile}{
+            right: -15px;
+        }
+    }
+}
+
+.slider-nav-style-1:hover .swiper-button-next,
+.slider-nav-style-1:hover .swiper-button-prev {
+    opacity: 1;
+    visibility: visible;
+}
+
+.slider-nav-style-1:hover .swiper-button-next {
+    right: 10px;
+}
+
+.slider-nav-style-1:hover .swiper-button-prev {
+    left: 10px;
+}

@@ -1,0 +1,220 @@
+.hero-slide-item {
+    background-color: #e7e7e7;
+}
+
+.slider-height {
+    height: 750px;
+    @media #{$laptop-device} {
+        height: 650px;
+    }
+    @media #{$desktop-device} {
+        height: 550px;
+    }
+    @media #{$tablet-device} {
+        height: 450px;
+    }
+    @media #{$large-mobile} {
+        height: 300px;
+    }
+    @media #{$small-mobile} {
+        height: 750px;
+    }
+    @media #{$extra-small-mobile} {
+        height: 650px;
+    }
+}
+
+.slider-height-2 {
+    height: 750px;
+    @media #{$laptop-device} {
+        height: 650px;
+    }
+    @media #{$desktop-device} {
+        height: 550px;
+    }
+    @media #{$tablet-device} {
+        height: 450px;
+    }
+    @media #{$large-mobile} {
+        height: 400px;
+    }
+    @media #{$small-mobile} {}
+    @media #{$extra-small-mobile} {}
+}
+
+.hero-slide-image {
+    & img {
+        max-width: 100%;
+        animation-duration: 1s;
+        animation-fill-mode: both;
+        animation-name: fadeOutUp;
+        @media #{$small-mobile} {
+            width: 80%;
+            margin: auto;
+        }
+        @media #{$extra-small-mobile} {
+            width: 90%;
+        }
+    }
+    @media #{$small-mobile} {
+        margin-top: 50px;
+        text-align: center;
+    }
+}
+
+.swiper-slide-active {
+    & .hero-slide-image {
+        & img {
+            animation-name: fadeInUp;
+            animation-delay: 1s;
+        }
+    }
+}
+
+.hero-slide-content {
+    position: relative;
+    z-index: 9;
+    & .category {
+        font-size: 24px;
+        font-weight: 600;
+        font-family: $heading-font;
+        display: block;
+        @media #{$tablet-device} {
+            font-size: 20px;
+        }
+        @media #{$large-mobile} {
+            font-size: 18px;
+        }
+        @media #{$extra-small-mobile} {}
+    }
+    & .title-1 {
+        font-size: 72px;
+        font-weight: 700;
+        font-family: $heading-font;
+        color: $heading-color;
+        margin-bottom: 10px;
+        @media #{$desktop-device} {}
+        @media #{$tablet-device} {
+            font-size: 52px;
+        }
+        @media #{$large-mobile} {
+            font-size: 40px;
+        }
+    }
+    & p {
+        max-width: 470px;
+        @media #{$tablet-device} {
+            font-size: 14px;
+        }
+        @media #{$large-mobile} {
+            font-size: 14px;
+            margin: 0;
+        }
+        @media #{$large-mobile} {}
+    }
+    & .btn {
+        @media #{$tablet-device,
+ $large-mobile
+    }
+    {
+        width: 120px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 14px;
+    }
+    @media #{$extra-small-mobile} {}
+}
+
+&.hero-slide-content-2 {
+    margin-top: -65px;
+    & .category {
+        color: $white;
+    }
+    & .title-1 {
+        color: $white;
+        font-size: 82px;
+        @media #{$desktop-device} {
+            font-size: 65px;
+        }
+        @media #{$tablet-device} {
+            font-size: 55px;
+        }
+        @media #{$large-mobile} {
+            font-size: 40px;
+        }
+        @media #{$extra-small-mobile} {
+            font-size: 36px;
+        }
+    }
+    & p {
+        color: $white;
+        margin: auto;
+        @media #{$large-mobile} {
+            max-width: 450px;
+        }
+    }
+    & .btn {
+        width: 170px;
+        @media #{$tablet-device,
+ $large-mobile
+    }
+    {
+        width: 120px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 14px;
+    }
+}
+
+
+}
+
+}
+.slider-dot-style-1 {
+    & .swiper-pagination-bullet {
+        width: 14px;
+        height: 14px;
+        display: inline-block;
+        border-radius: 100%;
+        background: transparent;
+        opacity: 1;
+        border: 1px solid #000000;
+        margin: 0 5px;
+        box-shadow: none;
+        transition: $baseTransition;
+        &:hover {
+            background-color: $theme-color;
+            border-color: $theme-color;
+        }
+        
+        &.swiper-pagination-bullet-active {
+            background-color: $theme-color;
+            border-color: $theme-color;
+        }
+    }
+    &.dot-color-white {
+        & .swiper-pagination-bullet {
+            border: 1px solid #fff;
+            &:hover {
+                background-color: $theme-color;
+                border-color: $theme-color;
+            }
+            &.swiper-pagination-bullet-active {
+                background-color: $theme-color;
+                border-color: $theme-color;
+            }
+        }
+    }
+}
+// Home Page Two
+.hero-bg-image {
+    & img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+}

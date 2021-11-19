@@ -1,0 +1,172 @@
+// About Page Style
+.about-area {
+	.about-content {
+		& h2 {
+			font-weight: 600;
+			margin: 0 0 15px;
+			font-size: 36px;
+			@media #{$extra-small-mobile} {
+				font-size: 24px;
+			}
+		}
+		p {
+			line-height: 26px;
+		}
+	}
+	.about-left-image {
+		& img {
+			object-fit: cover;
+			object-position: center;
+		}
+	}
+	.single-about {
+		h4 {
+			font-size: 30px;
+			font-weight: 600;
+			margin: 0 0 15px;
+			@media #{$extra-small-mobile} {
+				font-size: 24px;
+			}
+		}
+		p {
+			line-height: 26px;
+		}
+	}
+}
+
+.progressbar-section {
+	.content {
+		.title {
+			font-size: 28px;
+			font-weight: 700;
+			margin-bottom: 15px;
+			text-transform: capitalize;
+        }
+        .title-desc{
+            line-height: 26px;
+        }
+	}
+}
+
+.skill-progressbar {
+	margin-bottom: 35px;
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.team-section {
+	background-color: #f6f6f6;
+	padding-top: 95px;
+	padding-bottom: 75px;
+	@media #{$desktop-device} {
+		padding-top: 72px;
+		padding-bottom: 55px;
+	}
+	@media #{$tablet-device} {
+		padding-top: 52px;
+		padding-bottom: 35px;
+	}
+	@media #{$large-mobile} {
+		padding-top: 45px;
+		padding-bottom: 25px;
+	}
+}
+.team {
+	&-single {
+		background: #fff;
+		margin: 0 auto;
+		text-align: center;
+		padding: 20px 30px 45px 30px;
+	}
+
+	&-content {
+		position: relative;
+		font-size: 16px;
+	}
+
+	&-name {
+		font-weight: 700;
+		font-size: 16px;
+	}
+
+	&-img img {
+		margin: 0 auto;
+	}
+
+	&-social {
+		width: 100%;
+		background: #fff;
+		bottom: -22px;
+		transition: 0.3s;
+		opacity: 0;
+		visibility: hidden;
+		font-size: 16px;
+		position: absolute;
+	}
+
+	&-social li {
+		display: inline-block;
+		margin-right: 10px;
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+
+	&-social a {
+		color: #212121;
+        transition: 0.3s;
+        font-size: 18px;
+		&:hover {
+			color: $theme-color;
+		}
+	}
+
+	&-single:hover &-social {
+		bottom: 0px;
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
+.company-logo-single-item {
+	&.swiper-slide {
+		text-align: center;
+	}
+}
+.team-title {
+	font-size: 14px;
+}
+
+.progressbar-section {
+	background-color: #f6f6f6;
+	padding-top: 97px;
+	padding-bottom: 70px;
+
+	@media #{$desktop-device} {
+		padding-top: 77px;
+		padding-bottom: 70px;
+	}
+	@media #{$tablet-device} {
+		padding-top: 57px;
+		padding-bottom: 60px;
+	}
+	@media #{$large-mobile} {
+		padding-top: 57px;
+		padding-bottom: 30px;
+	}
+}
+
+.custom-progress {
+	@media #{$large-mobile} {
+		margin-top: 30px;
+	}
+}
+
+.banner-preduct-wrapper {
+	& .pr-0 {
+		@media #{$large-mobile} {
+			padding-right: 15px !important;
+		}
+	}
+}

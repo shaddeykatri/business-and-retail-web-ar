@@ -1,0 +1,81 @@
+.header-top {
+    padding: 11px 0;
+}
+
+.header-top-massege {
+    & p {
+        color: $theme-color;
+        font-family: $raleway;
+        font-weight: 300;
+        font-style: italic;
+        font-size: 14px;
+    }
+}
+
+/* Language & Currency */
+.header-top-set-lan-curr {
+    display: flex;
+    flex-wrap: wrap;
+    font-family: $raleway;
+    & .dropdown {
+        & .dropdown-toggle {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            transition: $baseTransition;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            background-color: transparent;
+            border-right: 1px solid#43474e;
+            & i {
+                font-size: 18px;
+                margin-left: 7px;
+                color: #fff;
+                transition: $baseTransition;
+                line-height: 23px;
+            }
+            &::after {
+                display: none;
+            }
+            &:hover {
+                color: $theme-color;
+                & i {
+                    color: $theme-color;
+                }
+            }
+        }
+        & .dropdown-menu {
+            margin: 0;
+            top: 34px !important;
+            left: auto !important;
+            right: 0;
+            min-width: 130px;
+            overflow: hidden;
+            padding: 0 15px;
+            background: #fff;
+            border-radius: 0;
+            border: none;
+            box-shadow: 0 3px 25.5px 4.5px rgba(0, 0, 0, 0.06);
+            transform: translate3d(0, 0, 0) !important;
+            inset: 34px auto auto 0px !important;
+            & li {
+                border-bottom: 1px solid #ebebeb;
+                &:last-child {
+                    border: none;
+                }
+            }
+            & .dropdown-item {
+                padding: 10px;
+                color: $body-color;
+                line-height: 25px;
+                font-size: 13px;
+                background: transparent;
+                &:hover {
+                    color: $theme-color;
+                }
+            }
+        }
+    }
+}
