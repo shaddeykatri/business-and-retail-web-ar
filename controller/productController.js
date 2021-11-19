@@ -1,6 +1,7 @@
 const { Fashion, Furniture, Machinery } = require("../models/product");
 const asyncHandler = require("../middleware/async");
 const qrcode = require("qrcode");
+const useragent = require('express-useragent');
 var path = require("path");
 
 exports.goToHomePage = asyncHandler(async (req, res, next) => {
