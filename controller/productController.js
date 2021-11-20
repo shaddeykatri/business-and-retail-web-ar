@@ -12,10 +12,15 @@ exports.goToHomePage = asyncHandler(async (req, res, next) => {
 exports.renderOtherFiles = asyncHandler(async (req, res, next) => {
   var fileName = req.params["filename"];
   console.log("filename", fileName);
-  if(req.query.id !== 'undefined' && req.query.id !== null && req.query.id.length === 24) {
-    res.render(path.join(__dirname + '/../views/' + fileName), { id: req.query.id });
+  console.log(req.query.id);
+  if(req.query.id !== undefined && req.query.id !== null && req.query.industry !== undefined && req.query.industry !== null) {
+    if(req.query.id.length === 24 && req.query.industry.length !== 0 && (req.query.industry.localeCompare('Furniture') === 0 || req.query.industry.localeCompare('Fashion') === 0 || req.query.industry.localeCompare('Machinery') === 0)) {
+      res.render(path.join(__dirname + '/../views/' + fileName), { id: req.query.id, industry: req.query.industry });
+    }
   }
-  res.sendFile(path.join(__dirname + "/../views/" + fileName));
+  else {
+    res.sendFile(path.join(__dirname + "/../views/" + fileName));
+  }
 });
 
 exports.makeQrCode = asyncHandler(async (req, res, next) => {

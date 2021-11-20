@@ -1731,7 +1731,7 @@
                     prodDiv.appendChild(thumbDiv);
 
                     var thumbATag = document.createElement('a');
-                    thumbATag.href = '/api/v1/single-product.html';
+                    thumbATag.href = '/api/v1/single-product.html?id=' + data.Products[i]._id + '&industry=' + data.Products[i].industry;
                     thumbATag.className = 'image';
                     thumbDiv.appendChild(thumbATag);
 
@@ -1803,7 +1803,7 @@
                     contentDiv.appendChild(h5TitleTag);
 
                     var nameATag = document.createElement('a');
-                    nameATag.href = '/api/v1/single-product.html';
+                    nameATag.href = '/api/v1/single-product.html?id=' + data.Products[i]._id + '&industry=' + data.Products[i].industry;
                     nameATag.innerText = data.Products[i].name;
                     h5TitleTag.appendChild(nameATag);
 

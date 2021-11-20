@@ -25,7 +25,24 @@
     <link rel="icon" href="/styles/images/favicon/favicon.png" sizes="192x192" />
     <link rel="apple-touch-icon" href="/styles/images/favicon/favicon.png" />
     <meta name="msapplication-TileImage" content="/styles/images/favicon/favicon.png" />
-    <!-- Structured Data  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="/styles/js/plugins/jquery-3.6.0.min.js"></script>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+    <!-- 🚨 REQUIRED: Web Components polyfill to support Edge and Firefox < 63 -->
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.1.3/webcomponents-loader.js"></script>
+
+    <!-- 💁 OPTIONAL: Intersection Observer polyfill for better performance in Safari and IE11 -->
+    <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+
+    <!-- 💁 OPTIONAL: Resize Observer polyfill improves resize behavior in non-Chrome browsers -->
+    <script src="https://unpkg.com/resize-observer-polyfill@1.5.0/dist/ResizeObserver.js"></script>
+
+    <!-- 💁 OPTIONAL: Fullscreen polyfill is required for experimental AR features in Canary -->
+    <script src="https://unpkg.com/fullscreen-polyfill@1.0.2/dist/fullscreen.polyfill.js"></script>
+
+    <!-- 💁 OPTIONAL: Include prismatic.js for Magic Leap support -->
+    <script src="https://unpkg.com/@magicleap/prismatic@0.18.2/prismatic.min.js"></script>
     <script type="application/ld+json">
         {
             "@context": "http://schema.org",
@@ -34,6 +51,9 @@
             "url": "Replace_with_your_site_URL"
         }
     </script>
+    <!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <!-- Structured Data  -->
 
     <!-- vendor css (Bootstrap & Icon Font) -->
     <!-- <link rel="stylesheet" href="/styles/css/vendor/simple-line-icons.css" />
@@ -54,7 +74,23 @@
 
     <!-- Main Style -->
     <!-- <link rel="stylesheet" href="/styles/css/style.css" /> -->
+    <style>
+        @media (max-width: 1024px) {
+            .qrDivClass {
+                display: none;
+            }
 
+            #full-screen {
+                display: none;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .color-swatches-class {
+                margin-left: -65px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -525,116 +561,26 @@
                 <div class="col-lg-5 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
                     <!-- Swiper -->
                     <div class="swiper-container zoom-top">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide zoom-image-hover">
-                                <img class="img-responsive m-auto" src="/styles/images/product-image/zoom-image/1.jpg" alt="">
-                            </div>
-                            <div class="swiper-slide zoom-image-hover">
-                                <img class="img-responsive m-auto" src="/styles/images/product-image/zoom-image/2.jpg" alt="">
-                            </div>
-                            <div class="swiper-slide zoom-image-hover">
-                                <img class="img-responsive m-auto" src="/styles/images/product-image/zoom-image/3.jpg" alt="">
-                            </div>
-                            <div class="swiper-slide zoom-image-hover">
-                                <img class="img-responsive m-auto" src="/styles/images/product-image/zoom-image/4.jpg" alt="">
-                            </div>
-                            <div class="swiper-slide zoom-image-hover">
-                                <img class="img-responsive m-auto" src="/styles/images/product-image/zoom-image/5.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-container zoom-thumbs slider-nav-style-1 small-nav mt-3 mb-3">
-                        <!-- <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <img class="img-responsive m-auto" src="/styles/images/product-image/1.jpg" alt="">
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="img-responsive m-auto" src="/styles/images/product-image/2.jpg" alt="">
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="img-responsive m-auto" src="/styles/images/product-image/3.jpg" alt="">
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="img-responsive m-auto" src="/styles/images/product-image/4.jpg" alt="">
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="img-responsive m-auto" src="/styles/images/product-image/5.jpg" alt="">
-                            </div>
-                        </div> -->
-                        <!-- Add Arrows -->
-                        <div class="swiper-buttons">
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
+                        <div class="swiper-wrapper" id="model-viewer-parent">   
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-7 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
-                    <div class="product-details-content quickview-content">
-                        <h2>Originals Kaval Windbr</h2>
-                        <!-- <p class="reference">Reference:<span> demo_17</span></p> -->
-                        <!-- <div class="pro-details-rating-wrap">
-                            <div class="rating-product">
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                                <i class="ion-android-star"></i>
-                            </div>
-                            <span class="read-review"><a class="reviews" href="#">Read reviews (1)</a></span>
-                        </div> -->
-                        <div class="pricing-meta">
+                    <div class="product-details-content quickview-content" id="product-details-content">
+                        <h2 id="heading" style="font-size: 2.5rem;max-width: 500px;"></h2>
+                        <div class="pricing-meta" id="pricing">
                             <ul>
-                                <li class="old-price not-cut">$18.90</li>
+                                <li class="sub-category" id="sub-category" style="font-size: 1rem;"></li>
+                                <li class="old-price not-cut" id="price" style="font-size: 1.5rem;"></li>
                             </ul>
-                        </div>
-                        <p class="quickview-para">Lorem ipsum dolor sit amet, consectetur adipisic elit eiusm tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim venialo quis nostrud exercitation ullamco</p>
-                        <!-- <div class="pro-details-quality">
-                            <div class="cart-plus-minus">
-                                <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
+                            <div id="qrdiv" class="qrDivClass">
                             </div>
-                            <div class="pro-details-cart">
-                                <button class="add-cart btn btn-primary btn-hover-primary ml-4" href="#"> Add To
-                                    Cart</button>
+                            <div id="qr-text" class="qrDivClass">
                             </div>
                         </div>
-                        <div class="pro-details-wish-com">
-                            <div class="pro-details-wishlist">
-                                <a href="wishlist.html"><i class="ion-android-favorite-outline"></i>Add to
-                                    wishlist</a>
-                            </div>
-                            <div class="pro-details-compare">
-                                <a href="compare.html"><i class="ion-ios-shuffle-strong"></i>Add to compare</a>
-                            </div>
+                        <p class="quickview-para" id="description" style="font-size: 1rem; margin-top: 50px;"></p>
+                        <div class="pro-details-quality">
                         </div>
-                        <div class="pro-details-social-info">
-                            <span>Share</span>
-                            <div class="social-info">
-                                <ul class="d-flex">
-                                    <li>
-                                        <a href="#"><i class="ion-social-facebook"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="ion-social-twitter"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="ion-social-google"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="ion-social-instagram"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="pro-details-policy">
-                            <ul>
-                                <li><img src="/styles/images/icons/policy.png" alt="" /><span>Security Policy (Edit With
-                                        Customer Reassurance Module)</span></li>
-                                <li><img src="/styles/images/icons/policy-2.png" alt="" /><span>Delivery Policy (Edit
-                                        With Customer Reassurance Module)</span></li>
-                                <li><img src="/styles/images/icons/policy-3.png" alt="" /><span>Return Policy (Edit With
-                                        Customer Reassurance Module)</span></li>
-                            </ul>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -831,7 +777,123 @@
     <script src="/styles/js/main.js"></script>
     <script>
         var id = "<%= id %>";
+        var industry = "<%= industry %>";
+        console.log(industry);
         console.log(id);
+        const ngrokUrl = 'http://localhost:5000';
+        var url = ngrokUrl + "/api/v1/" + industry + "/" + id;
+        async function getProduct(url) {
+            const response = await fetch(url);
+            return response.json();
+        }
+        var qrTextParent = document.getElementById("qr-text");
+        while (qrTextParent.firstChild) { qrTextParent.removeChild(qrTextParent.firstChild); }
+
+        var modelViewerParent = document.getElementById("model-viewer-parent");
+        while (modelViewerParent.firstChild) { modelViewerParent.removeChild(modelViewerParent.firstChild); }
+
+        var qrPriceTag = document.getElementById("qrdiv");
+        while (qrPriceTag.firstChild) { qrPriceTag.removeChild(qrPriceTag.firstChild); }
+        getProduct(url)
+            .then(data => {
+                console.log(data);
+                var TextStr = "<span style='font-size: 11px;float:left;margin-left: 555px;font-weight: 700;'>View in AR</span>"
+                $('#qr-text').append(TextStr);
+
+                var Android = "<i class='fa fa-android' style='float:left;margin: 0px 5px 0px 5px;font-size:24px;color: #78C257;'></i>"
+                $('#qr-text').append(Android);
+                var Ios = "<i class='fab fa-apple' style='float:left'></i>"
+                $('#qr-text').append(Ios);
+                var createModelViewer = document.createElement("model-viewer");
+                var createARButton = document.createElement("button");
+
+                createARButton.setAttribute("slot", "ar-button");
+                createARButton.style.backgroundColor = "rgb(255 255 255)";
+                createARButton.style.borderRadius = "25px";
+                createARButton.style.border = "solid 1px #b9b9b9";
+                createARButton.style.position = "absolute";
+                createARButton.style.bottom = "16px";
+                createARButton.style.marginLeft = "31%";
+                createARButton.style.backgroundImage = "url(\'styles/images/icons/3dIcon2.png\')";
+                createARButton.style.backgroundPosition = "8px 8px";
+                createARButton.style.backgroundRepeat = "no-repeat";
+
+                createARButton.innerText = " View in your space";
+                createARButton.style.fontSize = "12px";
+                createARButton.style.padding = "8px 8px 8px 32px";
+                createARButton.style.color = "#4285F4";
+                createARButton.style.fontWeight = "700";
+                createModelViewer.appendChild(createARButton);
+
+                createModelViewer.className = "c modal-fullscreen-md-down";
+                createModelViewer.id = "model-viewer-id"
+                createModelViewer.setAttribute("ar", "");
+                createModelViewer.setAttribute("ar-modes", "scene-viewer webxr quick-look");
+                createModelViewer.setAttribute("ar-scale", "fixed");
+                // createModelViewer.setAttribute("ar-placement", "floor")
+                createModelViewer.setAttribute("camera-controls", "")
+                createModelViewer.setAttribute("src", data.Product.src);
+                createModelViewer.setAttribute("ios-src", data.Product.ios_src);
+                createModelViewer.setAttribute("alt", "A 3D model of an astronaut");
+                createModelViewer.setAttribute("background-color", "#9FB8AD");
+                createModelViewer.setAttribute("shadow-intensity", "1");
+                createModelViewer.setAttribute("auto-rotate", "");
+                createModelViewer.setAttribute("magic-leap", "");
+                createModelViewer.setAttribute("loading", "lazy");
+                createModelViewer.setAttribute("poster", data.Product.product_image_url);
+                createModelViewer.style.backgroundColor = "#eee";
+                createModelViewer.style.width = "400px";
+                createModelViewer.style.height = "300px";
+
+                modelViewerParent.appendChild(createModelViewer);
+
+                var title = document.getElementById("heading");
+                title.innerText = data.Product.name;
+
+                var subCategory = document.getElementById("sub-category");
+                subCategory.innerText = data.Product.category;
+
+                var price = document.getElementById("price");
+                price.innerText = '$' + data.Product.price;
+
+                var description = document.getElementById("description");
+                description.innerText = data.Product.description;
+
+                var getQrUrl = ngrokUrl + '/api/v1/makeQrCode';
+
+                var postUrl = ngrokUrl + '/api/v1/scanQrCode/' + data.Product.industry + '/' + data.Product._id;
+                var jsonBody = { url: postUrl };
+
+                async function getQrCode(endpoint) {
+                    const qrCodeResponse = await fetch(endpoint, {
+                        method: "post",
+                        url: endpoint,
+                        body: JSON.stringify(jsonBody),
+                        headers: { "Content-type": "application/json; charset=UTF-8" }
+                    });
+                    return qrCodeResponse.json();
+                }
+
+                getQrCode(getQrUrl).then(qrResult => {
+                    var outputImg = document.createElement('img');
+                    outputImg.src = qrResult.result;
+                    outputImg.style.float = "right"
+                    outputImg.style.width = "125px"
+                    outputImg.style.height = "125px"
+                    outputImg.style.marginTop = "-120px"
+                    qrPriceTag.appendChild(outputImg);
+                });
+            });
+    </script>
+    <script src="/styles/js/vendor/vendor.min.js"></script>
+    <script src="/styles/js/plugins/plugins.min.js"></script>
+    <script src="/styles/js/main.js"></script>
+
+    <script type="module" src="https://unpkg.com/@google/model-viewer@v0.3.1/dist/model-viewer.js">
+    </script>
+
+    <!-- Loads <model-viewer> for old browsers like IE11: -->
+    <script nomodule src="https://unpkg.com/@google/model-viewer@v0.3.1/dist/model-viewer-legacy.js">
     </script>
 </body>
 
