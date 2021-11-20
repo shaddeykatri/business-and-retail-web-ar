@@ -12,6 +12,9 @@ exports.goToHomePage = asyncHandler(async (req, res, next) => {
 exports.renderOtherFiles = asyncHandler(async (req, res, next) => {
   var fileName = req.params["filename"];
   console.log("filename", fileName);
+  if(req.query.id !== 'undefined' && req.query.id !== null && req.query.id.length === 24) {
+    res.render(path.join(__dirname + '/../views/' + fileName), { id: req.query.id });
+  }
   res.sendFile(path.join(__dirname + "/../views/" + fileName));
 });
 
