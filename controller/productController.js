@@ -6,7 +6,15 @@ var path = require("path");
 
 exports.goToHomePage = asyncHandler(async (req, res, next) => {
   console.log("Root page hit!");
-  res.sendFile(path.join(__dirname + "/../views/index.html"));
+  if(req.query.category !== undefined && req.query.category !== null && req.query.category.length !== 0){
+    console.log("cat",req.query.category)
+    res.render(path.join(__dirname + "/../views/index.html"), {category : req.query.category});
+  }
+  else{
+    console.log("inside else")
+    res.render(path.join(__dirname + "/../views/index.html"),{category: ""});
+  }
+
 });
 
 exports.renderOtherFiles = asyncHandler(async (req, res, next) => {
@@ -15,11 +23,16 @@ exports.renderOtherFiles = asyncHandler(async (req, res, next) => {
   console.log(req.query.id);
   if(req.query.id !== undefined && req.query.id !== null && req.query.industry !== undefined && req.query.industry !== null) {
     if(req.query.id.length === 24 && req.query.industry.length !== 0 && (req.query.industry.localeCompare('Furniture') === 0 || req.query.industry.localeCompare('Fashion') === 0 || req.query.industry.localeCompare('Machinery') === 0)) {
-      res.render(path.join(__dirname + '/../views/' + fileName), { id: req.query.id, industry: req.query.industry });
+      res.render(path.join(__dirname + '/../views/' + fileName), { id: req.query.id, industry: req.query.industry});
     }
   }
   else {
-    res.sendFile(path.join(__dirname + "/../views/" + fileName));
+    if(req.query.category !== undefined && req.query.category !== null && req.query.category.length !== 0){
+      res.render(path.join(__dirname + "/../views/" + fileName),{category: req.query.category});
+    }else{
+      res.render(path.join(__dirname + "/../views/" + fileName),{category: ""});
+    }
+
   }
 });
 
@@ -200,18 +213,18 @@ exports.getProductById = asyncHandler(async (req, res, next) => {
 });
 
 exports.getProductsByCategory = asyncHandler(async (req, res, next) => {
-  var Product;
+  var Products;
 
   //get Product of a particular category respective of industry
   if (req.params["industry"].localeCompare("Fashion") == 0) {
-    Product = await Fashion.find({ category: req.params["category"] });
+    Products = await Fashion.find({ category: req.params["category"] });
   } else if (req.params["industry"].localeCompare("Furniture") == 0) {
-    Product = await Furniture.find({ category: req.params["category"] });
+    Products = await Furniture.find({ category: req.params["category"] });
   } else if (req.params["industry"].localeCompare("Machinery") == 0) {
-    Product = await Machinery.find({ category: req.params["category"] });
+    Products = await Machinery.find({ category: req.params["category"] });
   }
   res.status(200).json({
-    Product,
+    Products,
   });
 });
 

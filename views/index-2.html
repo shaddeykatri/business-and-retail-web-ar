@@ -171,6 +171,7 @@
                                     <ul class="sub-menu">
                                         <li><a href="index.html">Furniture</a></li>
                                         <li><a href="index-2.html">Fashion</a></li>
+                                        <li><a href="index-3.html">Machinery</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#">About us</a></li>
@@ -353,6 +354,7 @@
                         <ul class="sub-menu">
                             <li><a href="index.html"><span class="menu-text">Furniture</span></a></li>
                             <li><a href="/api/v1/index-2.html"><span class="menu-text">Fashion</span></a></li>
+                            <li><a href="/api/v1/index-3.html"><span class="menu-text">Machinery</span></a></li>
                         </ul>
                     </li>
                     <li><a href="#">About Us</a></li>
@@ -550,6 +552,55 @@
     <!-- Banner Section Start -->
  
     <!-- Banner Section End -->
+
+    <!-- Product Category Start -->
+    <div class="section pt-100px pb-100px">
+        <div class="container">
+            <div class="category-slider swiper-container" data-aos="fade-up">
+                <div class="category-wrapper swiper-wrapper" id="swiperId">
+                    <!-- Single Category -->
+                    <div class=" swiper-slide">
+                        <a href="/api/v1/index-2.html?category=Footwear" class="category-inner ">
+                            <div class="category-single-item">
+                                <img src="/styles/images/icons/1.png" alt="">
+                                <span class="title">Footwear</span>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Single Category -->
+                    <div class=" swiper-slide">
+                        <a href="/api/v1/index-2.html?category=Handbags" class="category-inner ">
+                            <div class="category-single-item">
+                                <img src="/styles/images/icons/2.png" alt="">
+                                <span class="title">Handbags</span>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Single Category -->
+                    <div class=" swiper-slide">
+                        <a href="/api/v1/index-2.html?category=Menswear" class="category-inner ">
+                            <div class="category-single-item">
+                                <img src="/styles/images/icons/3.png" alt="">
+                                <span class="title">Menswear</span>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Single Category -->
+                    <div class=" swiper-slide">
+                        <a href="/api/v1/index-2.html?category=Womenswear" class="category-inner ">
+                            <div class="category-single-item">
+                                <img src="/styles/images/icons/4.png" alt="">
+                                <span class="title">Womenswear</span>
+                            </div>
+                        </a>
+                    </div>
+                                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Category End -->
 
     <!-- Product tab Area Start -->
     <div class="section product-tab-area">
@@ -1569,9 +1620,19 @@
     <!-- Main Js -->
     <script src="/styles/js/main.js"></script>
     <script>
-        var rowDiv = document.getElementById('prod-list');
+        var category = "<%= category %>";
+        console.log("category",category)
         const ngrokUrl = 'http://localhost:5000';
-        var url = ngrokUrl + "/api/v1/Fashion/getAll";
+        var url=""
+        var rowDiv = document.getElementById('prod-list');
+
+        if(category !==undefined && category !== null && category.length !== 0){
+            console.log("inside if")
+            url = ngrokUrl + "/api/v1/Fashion/"+ category + "/getAll";
+        }else{
+            url = ngrokUrl + "/api/v1/Fashion/getAll"
+        }
+
         async function getProducts(url) {
             const response = await fetch(url);
             return response.json();

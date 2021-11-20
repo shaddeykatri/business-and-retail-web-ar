@@ -557,120 +557,7 @@
     <!-- Hero/Intro Slider End -->
 
     <!-- Product Category Start -->
-    <div class="section pt-100px pb-100px">
-        <div class="container">
-            <div class="category-slider swiper-container" data-aos="fade-up">
-                <div class="category-wrapper swiper-wrapper" id="swiperId">
-                    <!-- Single Category -->
-                    <div class=" swiper-slide">
-                        <a href="/api/v1?category=Rack" class="category-inner ">
-                            <div class="category-single-item">
-                                <img src="/styles/images/icons/1.png" alt="">
-                                <span class="title">Rack</span>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Single Category -->
-                    <div class=" swiper-slide">
-                        <a href="/api/v1?category=Set" class="category-inner ">
-                            <div class="category-single-item">
-                                <img src="/styles/images/icons/2.png" alt="">
-                                <span class="title">Set</span>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Single Category -->
-                    <div class=" swiper-slide">
-                        <a href="/api/v1?category=Sofa" class="category-inner ">
-                            <div class="category-single-item">
-                                <img src="/styles/images/icons/3.png" alt="">
-                                <span class="title">Sofa</span>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Single Category -->
-                    <div class=" swiper-slide">
-                        <a href="/api/v1?category=Cubicle" class="category-inner ">
-                            <div class="category-single-item">
-                                <img src="/styles/images/icons/4.png" alt="">
-                                <span class="title">Cubicle</span>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Single Category -->
-                    <div class="swiper-slide">
-                        <a href="/api/v1?category=Chair" class="category-inner ">
-                            <div class="category-single-item">
-                                <img src="/styles/images/icons/5.png" alt="">
-                                <span class="title">Chair</span>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Single Category -->
-                    <!-- Single Category -->
-                    <div class="swiper-slide">
-                        <a href="/api/v1?category=Table" class="category-inner ">
-                            <div class="category-single-item">
-                                <img src="/styles/images/icons/5.png" alt="">
-                                <span class="title">Table</span>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Single Category --> 
-                    <!-- Single Category -->
-                    <div class="swiper-slide">
-                        <a href="/api/v1?category=Lounge" class="category-inner ">
-                            <div class="category-single-item">
-                                <img src="/styles/images/icons/5.png" alt="">
-                                <span class="title">Lounge</span>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Single Category -->
-                    <!-- Single Category -->
-                    <div class="swiper-slide">
-                        <a href="/api/v1?category=Lamp" class="category-inner ">
-                            <div class="category-single-item">
-                                <img src="/styles/images/icons/5.png" alt="">
-                                <span class="title">Lamp</span>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Single Category -->                    
-                    <!-- Single Category -->
-                    <div class="swiper-slide">
-                        <a href="/api/v1?category=Large Seater" class="category-inner ">
-                            <div class="category-single-item">
-                                <img src="/styles/images/icons/5.png" alt="">
-                                <span class="title">Large Seater</span>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Single Category -->
-                    <!-- Single Category -->
-                    <div class="swiper-slide">
-                        <a href="/api/v1?category=Hearth" class="category-inner ">
-                            <div class="category-single-item">
-                                <img src="/styles/images/icons/5.png" alt="">
-                                <span class="title">Hearth</span>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Single Category --> 
-                    <!-- Single Category -->
-                    <div class="swiper-slide">
-                        <a href="/api/v1?category=Bed" class="category-inner ">
-                            <div class="category-single-item">
-                                <img src="/styles/images/icons/5.png" alt="">
-                                <span class="title">Bed</span>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Single Category -->                                       
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <!-- Product Category End -->
 
@@ -1767,19 +1654,10 @@
     <!-- Main Js -->
     <script src="/styles/js/main.js"></script>
     <script>
-
-        var category = "<%= category %>";
-        console.log("category",category)
         const ngrokUrl = 'http://localhost:5000';
         var url=""
         var rowDiv = document.getElementById('prod-list');
-
-        if(category !==undefined && category !== null && category.length !== 0){
-            console.log("inside if")
-            url = ngrokUrl + "/api/v1/Furniture/"+ category + "/getAll";
-        }else{
-            url = ngrokUrl + "/api/v1/Furniture/getAll"
-        }
+        url = ngrokUrl + "/api/v1/Machinery/getAll"
         async function getProducts(url) {
             const response = await fetch(url);
             return response.json();
