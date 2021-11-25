@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node swagger.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,8 @@
     "http": "0.0.1-security",
     "mongoose": "^6.0.13",
     "morgan": "^1.10.0",
-    "qrcode": "^1.4.4"
+    "qrcode": "^1.4.4",
+    "swagger-autogen": "^2.13.0",
+    "swagger-ui-express": "^4.1.6"
   }
 }

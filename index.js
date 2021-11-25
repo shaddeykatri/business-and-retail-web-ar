@@ -7,7 +7,8 @@ const productRoutes = require("./routes/productRoutes");
 const connectDB = require("./config/database");
 var path = require("path");
 require("dotenv").config();
-
+const swaggerUi = require("swagger-ui-express");
+const swaggerFile = require("./swagger_output.json");
 //connect db
 connectDB();
 
@@ -27,6 +28,8 @@ app.use(
     limit: "50mb",
   })
 );
+
+app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use(morgan("dev"));
 //To Get Apache Log Format in Console for Handling Requests
