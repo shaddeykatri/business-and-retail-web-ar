@@ -4,37 +4,37 @@ const qrcode = require("qrcode");
 const useragent = require('express-useragent');
 var path = require("path");
 
-exports.goToHomePage = asyncHandler(async (req, res, next) => {
-  console.log("Root page hit!");
-  if(req.query.category !== undefined && req.query.category !== null && req.query.category.length !== 0){
-    console.log("cat",req.query.category)
-    res.render(path.join(__dirname + "/../views/index.html"), {category : req.query.category});
-  }
-  else{
-    console.log("inside else")
-    res.render(path.join(__dirname + "/../views/index.html"),{category: ""});
-  }
+// exports.goToHomePage = asyncHandler(async (req, res, next) => {
+//   console.log("Root page hit!");
+//   if(req.query.category !== undefined && req.query.category !== null && req.query.category.length !== 0){
+//     console.log("cat",req.query.category)
+//     res.render(path.join(__dirname + "/../views/index.html"), {category : req.query.category});
+//   }
+//   else{
+//     console.log("inside else")
+//     res.render(path.join(__dirname + "/../views/index.html"),{category: ""});
+//   }
 
-});
+// });
 
-exports.renderOtherFiles = asyncHandler(async (req, res, next) => {
-  var fileName = req.params["filename"];
-  console.log("filename", fileName);
-  console.log(req.query.id);
-  if(req.query.id !== undefined && req.query.id !== null && req.query.industry !== undefined && req.query.industry !== null) {
-    if(req.query.id.length === 24 && req.query.industry.length !== 0 && (req.query.industry.localeCompare('Furniture') === 0 || req.query.industry.localeCompare('Fashion') === 0 || req.query.industry.localeCompare('Machinery') === 0)) {
-      res.render(path.join(__dirname + '/../views/' + fileName), { id: req.query.id, industry: req.query.industry});
-    }
-  }
-  else {
-    if(req.query.category !== undefined && req.query.category !== null && req.query.category.length !== 0){
-      res.render(path.join(__dirname + "/../views/" + fileName),{category: req.query.category});
-    }else{
-      res.render(path.join(__dirname + "/../views/" + fileName),{category: ""});
-    }
+// exports.renderOtherFiles = asyncHandler(async (req, res, next) => {
+//   var fileName = req.params["filename"];
+//   console.log("filename", fileName);
+//   console.log(req.query.id);
+//   if(req.query.id !== undefined && req.query.id !== null && req.query.industry !== undefined && req.query.industry !== null) {
+//     if(req.query.id.length === 24 && req.query.industry.length !== 0 && (req.query.industry.localeCompare('Furniture') === 0 || req.query.industry.localeCompare('Fashion') === 0 || req.query.industry.localeCompare('Machinery') === 0)) {
+//       res.render(path.join(__dirname + '/../views/' + fileName), { id: req.query.id, industry: req.query.industry});
+//     }
+//   }
+//   else {
+//     if(req.query.category !== undefined && req.query.category !== null && req.query.category.length !== 0){
+//       res.render(path.join(__dirname + "/../views/" + fileName),{category: req.query.category});
+//     }else{
+//       res.render(path.join(__dirname + "/../views/" + fileName),{category: ""});
+//     }
 
-  }
-});
+//   }
+// });
 
 exports.makeQrCode = asyncHandler(async (req, res, next) => {
   var inputUrl = req.body.url;
