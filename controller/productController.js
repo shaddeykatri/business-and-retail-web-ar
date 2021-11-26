@@ -52,7 +52,9 @@ exports.scanQrCode = asyncHandler(async (req, res, next) => {
     Product = await Furniture.findById(req.params["id"]);
   } else if (req.params["industry"].localeCompare("Machinery") == 0) {
     Product = await Machinery.findById(req.params["id"]);
-  }
+  } else if (req.params["industry"].localeCompare("Food") == 0) {
+    Product = await Food.findById(req.params["id"]);
+  }  
   var glbUrl = Product.src;
   var usdzUrl = Product.ios_src;
   var source = req.headers["user-agent"];
