@@ -41,4 +41,5 @@ module.exports = {
   Fashion: mongoose.model("Fashion", product),
   Furniture: mongoose.model("Furniture", product),
   Machinery: mongoose.model("Machinery", product),
+  Food: mongoose.model("Food", product)
 };

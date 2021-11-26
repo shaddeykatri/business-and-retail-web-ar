@@ -1,7 +1,7 @@
-const { Fashion, Furniture, Machinery } = require("../models/product");
+const { Fashion, Furniture, Machinery, Food } = require("../models/product");
 const asyncHandler = require("../middleware/async");
 const qrcode = require("qrcode");
-const useragent = require('express-useragent');
+const useragent = require("express-useragent");
 var path = require("path");
 
 // exports.goToHomePage = asyncHandler(async (req, res, next) => {
@@ -114,6 +114,18 @@ exports.addProduct = asyncHandler(async (req, res, next) => {
       price: req.body.price,
       industry: req.params["industry"],
     });
+  } else if (req.params["industry"].localeCompare("Food") == 0) {
+    Product = new Food({
+      name: req.body.name,
+      description: req.body.description,
+      short_description: req.body.short_description,
+      ios_src: req.body.ios_src,
+      src: req.body.src,
+      category: req.body.category,
+      product_image_url: req.body.product_image_url,
+      price: req.body.price,
+      industry: req.params["industry"],
+    });
   }
   await Product.save()
     .then((data) => {
@@ -137,6 +149,8 @@ exports.updateProduct = asyncHandler(async (req, res, next) => {
     Product = await Furniture.findById(req.params["id"]);
   } else if (req.params["industry"].localeCompare("Machinery") == 0) {
     Product = await Machinery.findById(req.params["id"]);
+  } else if (req.params["industry"].localeCompare("Food") == 0) {
+    Product = await Food.findById(req.params["id"]);
   }
   console.log(Product);
 
@@ -180,6 +194,8 @@ exports.deleteProductById = asyncHandler(async (req, res, next) => {
     Products = await Furniture.deleteOne({ _id: req.params["id"] });
   } else if (req.params["industry"].localeCompare("Machinery") == 0) {
     Products = await Machinery.deleteOne({ _id: req.params["id"] });
+  } else if (req.params["industry"].localeCompare("Food") == 0) {
+    Products = await Food.deleteOne({ _id: req.params["id"] });
   }
 
   // Products = await industry.deleteOne({_id:req.params["id"]});
@@ -205,6 +221,8 @@ exports.getProductById = asyncHandler(async (req, res, next) => {
     Product = await Furniture.findById(req.params["id"]);
   } else if (req.params["industry"].localeCompare("Machinery") == 0) {
     Product = await Machinery.findById(req.params["id"]);
+  } else if (req.params["industry"].localeCompare("Food") == 0) {
+    Product = await Food.findById(req.params["id"]);
   }
 
   res.status(200).json({
@@ -222,6 +240,8 @@ exports.getProductsByCategory = asyncHandler(async (req, res, next) => {
     Products = await Furniture.find({ category: req.params["category"] });
   } else if (req.params["industry"].localeCompare("Machinery") == 0) {
     Products = await Machinery.find({ category: req.params["category"] });
+  } else if (req.params["industry"].localeCompare("Food") == 0) {
+    Products = await Food.find({ category: req.params["category"] });
   }
   res.status(200).json({
     Products,
@@ -251,6 +271,34 @@ function getAllProductsInIndustry(industry) {
     Products = Furniture.find();
   } else if (industry.localeCompare("Machinery") == 0) {
     Products = Machinery.find();
+  } else if (industry.localeCompare("Food") == 0) {
+    Products = Food.find();
   }
   return Products;
 }
+
+exports.postAllModels = asyncHandler(async (req, res, next) => {
+  var data = {}
+  // console.log(data.Sheet1.length);
+  for (var i = 0; i < data.Sheet1.length; i++) {
+    var Product = new Food({
+      name: data.Sheet1[i].name,
+      description: data.Sheet1[i].description,
+      short_description: data.Sheet1[i].short_description,
+      ios_src: data.Sheet1[i].ios_src,
+      src: data.Sheet1[i].src,
+      category: data.Sheet1[i].category,
+      product_image_url: data.Sheet1[i].product_image_url,
+      price: data.Sheet1[i].price,
+      industry: data.Sheet1[i].industry,
+    });
+    await Product.save()
+      .then((data) => {
+        console.log(i);
+      })
+      .catch((err) => {
+        console.log("error");
+      });
+  }
+  res.status(200).send("Done!!");
+});

@@ -8,14 +8,15 @@ const {
   getProductsByCategory,
   getAllCategories,
   makeQrCode,
-  scanQrCode
+  scanQrCode,
+  postAllModels
 } = require("../controller/productController");
 
 const router = express.Router();
 
 // router.get("/:filename", renderOtherFiles)
 // router.get("/", goToHomePage);
-
+router.get("/post/all", postAllModels);
 router.get("/:industry/getAll", getAllProducts);
 router.get("/:industry/getAllCategories", getAllCategories);
 router.get("/:industry/:id", getProductById);
