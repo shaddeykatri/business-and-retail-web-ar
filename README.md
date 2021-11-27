@@ -25,12 +25,26 @@ npm start
 ```
 ### Usage
 A step by step series of examples that tell you how to get a development env running.
-Server running on http://0.0.0.0:5000/
+Server running on 
+```
+http://0.0.0.0:5000/
+
+Create a .env file and update the following parameters : 
+PORT=5000
+COSMOS_URL=
+COSMOSDB_USER=
+COSMOSDB_PASSWORD=
+```
 ### API Endpoints
 Refer the swagger documentation by hitting 
-```sh
+```
 http://0.0.0.0:5000/doc
 ```
+### Demo Link of the application
+```
+https://webarfrontend.azurewebsites.net/
+```
+
    [node.js]: <http://nodejs.org>
    [express]: <http://expressjs.com>
 
