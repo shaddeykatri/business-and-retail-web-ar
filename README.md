@@ -29,8 +29,9 @@ A step by step series of examples that tell you how to get a development env run
 Server running on 
 ```
 http://0.0.0.0:5000/
-
+```
 Create a .env file and update the following parameters : 
+```
 PORT=5000
 COSMOS_URL= place your Mongo cosmos DB URL
 COSMOSDB_USER= place your Mongodb cosmos DB user url
