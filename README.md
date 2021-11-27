@@ -1,9 +1,10 @@
-# Web AR Backend
+# Web AR Framework Backend
 ## Download and Installation
 
 To begin using this framework, choose one of the following options to get started:
 * Clone the repo: `git clone https://github.com/shaddeykatri/business-and-retail-web-ar.git`
 * [Fork, Clone, or Download on GitHub](https://github.com/shaddeykatri/business-and-retail-web-ar)
+* [Clone the frontend repo](https://github.com/shaddeykatri/web-ar-angular-frontend)
 
 ### Technology
 
@@ -31,18 +32,14 @@ http://0.0.0.0:5000/
 
 Create a .env file and update the following parameters : 
 PORT=5000
-COSMOS_URL=
-COSMOSDB_USER=
-COSMOSDB_PASSWORD=
+COSMOS_URL= place your Mongo cosmos DB URL
+COSMOSDB_USER= place your Mongodb cosmos DB user url
+COSMOSDB_PASSWORD= place your Mongo DB cosmos DB password
 ```
 ### API Endpoints
 Refer the swagger documentation by hitting 
 ```
 http://0.0.0.0:5000/doc
-```
-### Demo Link of the application
-```
-https://webarfrontend.azurewebsites.net/
 ```
 
    [node.js]: <http://nodejs.org>
